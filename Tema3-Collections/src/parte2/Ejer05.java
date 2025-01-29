@@ -29,6 +29,99 @@ public class Ejer05 {
 		 * Salir: Termina la ejecución del programa.
 		 */
 
+		// variable para almacenar la opcion del menu
+		int opcion;
+
+		// variable para almacenar el nombre de la serie
+		String serie;
+
+		// variable para almacenar la valoracion
+		int valoracion;
+
+		System.out.println("VALORAR SERIES");
+		System.out.println();
+
+		// llamo al menú y almaceno la opción
+		opcion = menu();
+
+		// mientras que la opcion no sea 4
+		while (opcion != 4) {
+
+			switch (opcion) {
+
+			// agregar serie y valoracion
+			case 1 -> {
+
+				// limpiar el buffer
+				leer.nextLine();
+
+				System.out.print("Introduzca el nombre de la serie que se ha visto: ");
+				serie = leer.nextLine();
+
+				System.out.println();
+				System.out.print("Introduzca la valoración de la serie sobre 10: ");
+				valoracion = leer.nextInt();
+
+				// añado la serie y la valoración
+				listaSeries.put(serie, valoracion);
+			}
+
+			case 2 -> {
+
+				// limpiar el buffer
+				leer.nextLine();
+
+				System.out.print("Introduzca el nombre de la serie a buscar: ");
+				serie = leer.nextLine();
+
+				// si al coger la clave no es igual a null significa que está
+				if (listaSeries.get(serie) != null) {
+					System.out.println();
+					// la busca y la muestra
+					System.out.println("   La serie se encuentra en la lista");
+
+				} else {
+					System.out.println();
+					// si no está manda un error
+					System.err.println("   La serie no se encuentra en la lista");
+				}
+			}
+
+			case 3 -> {
+
+				// limpiar el buffer
+				leer.nextLine();
+
+				System.out.print("Introduzca el nombre de la serie a buscar: ");
+				serie = leer.nextLine();
+
+				// si al coger la clave no es igual a null significa que está
+				if (listaSeries.get(serie) != null) {
+					// elimina el par de claves
+					listaSeries.remove(serie);
+
+					System.out.println();
+					System.out.println("   La serie se ha eliminado correctamente");
+
+				} else {
+					System.out.println();
+					// si no está manda un error
+					System.err.println("   La serie no se encuentra en la lista y por lo tanto no se pudo eliminar");
+				}
+
+			}
+
+			}
+
+			// llamo al menú y almaceno la opción
+			opcion = menu();
+		}
+
+		System.out.println("Fin del programa");
+
+		// cierro el scanner
+		leer.close();
+
 	}
 
 	// funcion para el menu
